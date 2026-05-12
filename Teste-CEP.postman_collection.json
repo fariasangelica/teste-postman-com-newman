@@ -1,0 +1,183 @@
+{
+  "info": {
+    "_postman_id": "da341324-6e02-4fce-b501-d1b19b9ef733",
+    "name": "Teste-CEP",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "27636810"
+  },
+  "item": [
+    {
+      "name": "Get CEP - OK",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "var schema = {\r",
+              "  \"type\": \"object\",\r",
+              "  \"properties\": {\r",
+              "    \"cep\": {\r",
+              "      \"type\": \"string\"\r",
+              "    },\r",
+              "    \"logradouro\": {\r",
+              "      \"type\": \"string\"\r",
+              "    },\r",
+              "    \"complemento\": {\r",
+              "      \"type\": \"string\"\r",
+              "    },\r",
+              "    \"unidade\": {\r",
+              "      \"type\": \"string\"\r",
+              "    },\r",
+              "    \"bairro\": {\r",
+              "      \"type\": \"string\"\r",
+              "    },\r",
+              "    \"localidade\": {\r",
+              "      \"type\": \"string\"\r",
+              "    },\r",
+              "    \"uf\": {\r",
+              "      \"type\": \"string\"\r",
+              "    },\r",
+              "    \"estado\": {\r",
+              "      \"type\": \"string\"\r",
+              "    },\r",
+              "    \"regiao\": {\r",
+              "      \"type\": \"string\"\r",
+              "    },\r",
+              "    \"ibge\": {\r",
+              "      \"type\": \"string\"\r",
+              "    },\r",
+              "    \"gia\": {\r",
+              "      \"type\": \"string\"\r",
+              "    },\r",
+              "    \"ddd\": {\r",
+              "      \"type\": \"string\"\r",
+              "    },\r",
+              "    \"siafi\": {\r",
+              "      \"type\": \"string\"\r",
+              "    }\r",
+              "  },\r",
+              "  \"required\": [\r",
+              "    \"cep\",\r",
+              "    \"logradouro\",\r",
+              "    \"complemento\",\r",
+              "    \"unidade\",\r",
+              "    \"bairro\",\r",
+              "    \"localidade\",\r",
+              "    \"uf\",\r",
+              "    \"estado\",\r",
+              "    \"regiao\",\r",
+              "    \"ibge\",\r",
+              "    \"gia\",\r",
+              "    \"ddd\",\r",
+              "    \"siafi\"\r",
+              "  ]\r",
+              "};\r",
+              "\r",
+              "pm.test('Validando estrutura do body', function () {\r",
+              "    const Ajv = require('ajv');\r",
+              "    const ajv = new Ajv();\r",
+              "\r",
+              "    const jsonData = pm.response.json();\r",
+              "    const valid = ajv.validate(schema, jsonData);\r",
+              "\r",
+              "    pm.expect(valid, JSON.stringify(ajv.errors)).to.be.true;\r",
+              "})\r",
+              "\r",
+              "pm.test(\"O tempo de resposta é inferior a 200 ms\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+              "\r",
+              "});\r",
+              "\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "viacep.com.br/ws/{{cep}}/json/",
+          "host": [
+            "viacep",
+            "com",
+            "br"
+          ],
+          "path": [
+            "ws",
+            "{{cep}}",
+            "json",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get CEP - Bad Request",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"O status code é 400\", function () {",
+              "    pm.response.to.have.status(400);",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "viacep.com.br/ws/{{cepErrado}}/json/",
+          "host": [
+            "viacep",
+            "com",
+            "br"
+          ],
+          "path": [
+            "ws",
+            "{{cepErrado}}",
+            "json",
+            ""
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
