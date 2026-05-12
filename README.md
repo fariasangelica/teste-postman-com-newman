@@ -85,5 +85,9 @@ npm install -g newman-reporter-htmlextra
 **Roda no terminal:** newman run "Teste-CEP.postman_collection.json" -e Environment.postman_environment.json -r htmlextra --reporter-htmlextra-displayProgressBar
 <img width="856" height="861" alt="image" src="https://github.com/user-attachments/assets/8f9ead65-f39c-45e7-bd11-e782da3b2f7b" />
 
+**Caso queira mudar o título do relatório:** newman run "Teste-CEP.postman_collection.json" -e Environment.postman_environment.json -r htmlextra --reporter-htmlextra-displayProgressBar --reporter-htmlextra-title "Meu primeiro Relatório"
+
+<img width="1093" height="206" alt="image" src="https://github.com/user-attachments/assets/d3fd31dc-75ab-4f9f-959e-a47b833786e9" />
+
 
 
