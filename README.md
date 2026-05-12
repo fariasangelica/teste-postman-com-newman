@@ -1,4 +1,7 @@
-# Automação de Testes de API - ViaCEP 
+# Automação de Testes de API - ViaCEP
+![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
+![Newman](https://img.shields.io/badge/Newman-ef5b25?style=for-the-badge&logo=postman&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
 
 Este projeto contém a automação de testes para a API pública [ViaCEP](https://viacep.com.br/), desenvolvida para validar a integridade dos dados e a performance da consulta de endereços por CEP.
 
